@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD PHP</title>
+    <!-- ESTILOS CSS BOOTSTRAP-->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- ESTILOS CSS iconos FONTAWESOME-->
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <!-- ESTILOS SWEALERT-->
+    <link rel="stylesheet" href="../assets/plugins/sweetalert2/dist/sweetalert2.min.css">
+    <!-- ESTILOS tabla-->
+    <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="../assets/plugins/table/jquery.dataTables.min.css"> 
+    <link rel="stylesheet" href="../assets/plugins/table/Buttons-1.7.1/css/buttons.bootstrap.min.css"> 
+
+  
+   
+
+</head>
+<body>
+
+    <div class="container">
+       
+        <div class="card">
+        
+            <div class="card-header bg-info">
+                <h3 class="text-white">Crear cargos</h3>
+
+            </div>
+
+            <div class="card-body">
+               
+                <input type="hidden" name="idCargo" id="idCargo"> 
+                <form id="" method="POST">
+
+               
+                <div class="row">
+                    
+            
+                    <div class="col-md-6">
+                        <label for="dCargo">Nombre del cargo</label>
+                        <input type="text" name="dCargo" id="dCargo" placeholder="Ingrese el nuevo cargo" class="form-control solo-numero" onkeypress="return soloLetras(event);" autofocus>
+                        
+                    </div>  
+
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modificación de cargos</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                
+                
+                                <div class="row">
+                                    
+                
+                                 
+                                    <div class="col-md-6" style="display: none">
+                                        <label for="Id">Id</label>
+                                        <input type="text" name="idCargo" id="idCargoM" placeholder="" class="form-control solo-numero" autofocus>
+                                    </div>
+                
+                                    
+                                        <label for="cargo">Modificar cargo</label>
+                                        <input type="text" name="dCargo" id="dCargoM" placeholder="Modifique el cargo" class="form-control" >
+                                  
+                
+                                
+                
+                                </div>
+                
+                            
+                           
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" onclick="ModificarCargo();">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+               
+             </form>
+             <br>
+             <button class="btn btn-outline-info" id="guardar" onclick="GuardarCargo();"><span class="fa fa-save"></span> Guardar</button>
+             
+    
+            </div>
+
+            <div class="card-footer">
+              
+                <table class="display nowrap table table-striped" id="tablaCargos">
+
+                    <thead>
+                        <tr>
+
+                            <th>indice</th>
+                            <th>Descripción del cargo</th>
+                            <th></th>
+                            
+                        </tr>
+
+
+                    </thead>
+                    <tbody id="datosCargos">
+
+                    </tbody>
+
+
+
+                </table>
+               
+            
+
+            </div>
+
+
+        </div>
+
+    </form>
+
+    </div>
+
+
+    
+</body>
+<!-- javascript-->
+<script src="../assets/js/all.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/plugins/table/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/jquery-3.5.1.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/jszip.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/buttons.html5.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/pdfmake.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/vfs_fonts.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js//buttons.print.min.js"></script>
+
+
+<!-- <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+<script src="../js/persona.js"></script>
+<script src="../assets/plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+<!-- <script src="../assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script> -->
+
+
+
+
+</html>

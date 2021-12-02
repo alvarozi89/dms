@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SF REGISTRATION</title>
+    <!-- ESTILOS CSS BOOTSTRAP-->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- ESTILOS CSS iconos FONTAWESOME-->
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <!-- ESTILOS SWEALERT-->
+    <link rel="stylesheet" href="../assets/plugins/sweetalert2/dist/sweetalert2.min.css">
+    <!-- ESTILOS tabla-->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="../assets/plugins/table/jquery.dataTables.min.css"> -->
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+
+        <div class="card">
+
+            <div class="card-header bg-success">
+                <h3 class="text-white">Registro de cliente</h3>
+
+            </div>
+
+            <div class="card-body">
+
+                <input type="hidden" name="idPersona" id="idPersona">
+
+
+                <form id="" method="POST">
+
+
+                    <div class="row">
+
+
+                        <div class="col-md-6">
+                            <label for="cedula">Cedula</label>
+                            <input type="text" name="cedula" id="cedula" placeholder="Ingrese su cedula" class="form-control solo-numero" onkeypress="return validar_numero(event);" autofocus>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="nombre">Nombres</label>
+                            <input type="text" name="nombre" id="nombre" placeholder="Ingrese sus nombres" class="form-control" onkeypress="return soloLetras(event);">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="apellido">Apellidos</label>
+                            <input type="text" name="apellido" id="apellido" placeholder="Ingrese sus apellidos" class="form-control" onkeypress="return soloLetras(event);">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="Tipo de persona">Sexo</label>
+                            <select class="form-select" aria-label="Default select example" onchange="ocultarCargo();" id="sexo">
+                            <option selected>Seleccione su genero</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feménino</option >
+                          </select>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" name="telefono" id="telefono" placeholder="Ingrese su teléfono" class="form-control" onkeypress="return validar_numero(event);">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="email">Correo personal</label>
+                            <input type="email" name="correo" id="correo" placeholder="Ingrese su Correo personal" required class=" form-control ">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <label for="fecha">Fecha nacimiento</label >
+                        <input type="date" name="fechaN" id="fechaN" placeholder="Ingrese fecha" class="form-control">
+                    </div>
+
+                   
+                    <div class="col-md-6">
+                        <label for="direccion">Correo empresarial</label>
+                            <input type="text" name="correo_empresarial" id="correo_empresarial" placeholder="Ingrese su correo empresarial" class="form-control">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="fecha">Fecha ingreso</label >
+                        <input type="date" name="fechaI" id="fechaI" placeholder="Ingrese fecha de ingreso a la empresa" class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="Regional">Regional</label>
+                            <select class="form-select" aria-label="Default select example" id="regional">
+                            <option selected>Regional</option>
+                            <option value="1">Nariño</option>
+                            <option value="2">Valle</option >
+                          </select>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="cargo">CO</label>
+                            <select class="form-select" aria-label="Default select example" id="centro_operacion">
+                    
+                          </select>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="cargo">Cargo</label>
+                            <select class="form-select" aria-label="Default select example" id="cargo">
+                            
+                
+                          </select>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label for="cargo">Area de interes</label>
+                            <select class="form-select" aria-label="Default select example" id="area">
+                            
+                        
+                          </select>
+
+                        </div>
+
+
+                        <div class="col-md-6" style="display: none">
+                            <label for="fecha">Fecha registro</label >
+                        <input type="date" name="fechaR" id="fechaR" placeholder="Ingrese fecha" class="form-control" disabled >
+                    </div>
+
+
+
+                    </div>
+                </form>
+
+
+
+            </div>
+
+            <div class="card-footer">
+
+                <div class="row">
+                    <div class="btn-group-sm">
+
+                        <button class="btn btn-outline-info" id="guardar" onclick="Guardar();"><span class="fa fa-save"></span> Guardar</button>
+                  
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        </form>
+
+    </div>
+
+
+
+</body>
+<!-- javascript-->
+<script src="../assets/js/all.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.js"></script>
+<!-- <script src="../assets/plugins/table/jquery.dataTables.min.js"></script> -->
+<script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="../js/persona.js"></script>
+<script src="../assets/plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+<!-- <script src="../assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script> -->
+
+
+
+
+
+</html>

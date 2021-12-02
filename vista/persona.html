@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SF APP</title>
+    <!-- ESTILOS CSS BOOTSTRAP-->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- ESTILOS CSS iconos FONTAWESOME-->
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <!-- ESTILOS SWEALERT-->
+    <link rel="stylesheet" href="../assets/plugins/sweetalert2/dist/sweetalert2.min.css">
+    <!-- ESTILOS tabla-->
+    <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="../assets/plugins/table/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../assets/plugins/table/Buttons-1.7.1/css/buttons.bootstrap.min.css">
+
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <!-- style="width:90%" -->
+
+        <div class="card">
+
+
+            <div class="card-header bg-success ">
+                <h3 class="text-white">Tabla de personas</h3>
+
+            </div>
+
+            <br>
+
+            <div class="card-body">
+                <form id="" method="POST"> </form>
+
+
+
+                <div class="row">
+
+
+
+                    <div class="col-md-6">
+                        <select class="form-select" aria-label="Default select example" id="centro_operacion">
+                           
+                
+                      </select>
+
+                    </div>
+
+
+
+
+                    <!-- 
+                    <div class="col-md-6" id="divRol">
+
+                        <select class="form-select" aria-label="Default select example" id="roles">
+                                    <option selected>Seleccione rol</option>
+                                    <option value="TODOS">TODOS</option >
+                                    <option value="CLIENTE">CLIENTE</option >
+                                    <option value="EMPLEADO">Empleado</option >
+                                    <option value="ADMINISTRADOR">Administrador</option>
+                                    <option value="PROVEEDOR">Proveedor</option>
+                                </select>
+
+                    </div> -->
+
+                    <div class="col-md-6">
+                        <!-- <input type="button" value="Click me" onclick="Consultar();"> -->
+                        <button class="btn btn-outline-info" id="modificar" onclick="Consultar();"><span class="fa fa-search"></span> Consultar</button>
+                    </div>
+
+
+                </div>
+                <br>
+
+
+
+                <table class="cell-border compact stripe" id="tablaPersona" style="display: none;">
+
+                    <thead>
+                        <tr>
+
+                            <th>indice</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Cedula</th>
+                            <th>Teléfono</th>
+                            <th>Correo personal</th>
+                            <th>Correo empresarial</th>
+                            <th>Centro de operaciones</th>
+                            <th>Cargo actual</th>
+                            <th></th>
+
+
+
+
+                        </tr>
+
+
+                    </thead>
+                    <tbody id="datos">
+
+
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+            </div>
+
+
+            <div class="modal fade" id="modalMpersona" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modificación de personas</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <!-- <form id="" method="POST"> -->
+
+
+                            <input type="hidden" name="idPersona" id="idPersona">
+
+
+                            <div class="row">
+
+
+
+
+                                <div class="col-md-6">
+                                    <label for="cedula">Cedula</label>
+                                    <input type="text" name="cedula" id="cedulaM" placeholder="Ingrese su cedula" class="form-control solo-numero" onkeypress="return validar_numero(event);" autofocus>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="nombre">Nombres</label>
+                                    <input type="text" name="nombre" id="nombreM" placeholder="Ingrese sus nombres" class="form-control" onkeypress="return soloLetras(event);">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="apellido">Apellidos</label>
+                                    <input type="text" name="apellido" id="apellidoM" placeholder="Ingrese sus apellidos" class="form-control" onkeypress="return soloLetras(event);">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" name="telefono" id="telefonoM" placeholder="Ingrese su telefono" class="form-control" onkeypress="return validar_numero(event);">
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <label for="email">Correo personal</label>
+                                    <input type="email" name="correo" id="correoM" placeholder="Ingrese su Correo" class="form-control">
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <label for="email">Correo empresarial</label>
+                                    <input type="email" name="correo" id="correoEm" placeholder="Ingrese su Correo" class="form-control">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="cargo">CO</label>
+                                    <select class="form-select" aria-label="Default select example" id="centro_operacionM">
+                            
+                                  </select>
+
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <label for="cargo">Cargo</label>
+                                    <select class="form-select" aria-label="Default select example" id="cargo">
+                                    
+                        
+                                  </select>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label for="cargo">Area</label>
+                                    <select class="form-select" aria-label="Default select example" id="area">
+                                    
+                                
+                                  </select>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="Regional">Regional</label>
+                                    <select class="form-select" aria-label="Default select example" id="regional">
+                                        <option selected>Regional</option>
+                                        <option value="1">Nariño</option>
+                                        <option value="2">Valle</option >
+                                      </select>
+
+                                </div>
+
+
+
+                            </div>
+                            <!-- </form> -->
+
+                            <div class="row">
+                                <div class="btn-group-sm">
+
+                                    <br>
+
+                                    <!-- <button class="btn btn-outline-info"  id="modificar" onclick="Modificar();"><span class="fa fa-pencil-alt"></span> Modificar</button> -->
+
+
+
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-outline-info" id="modificar" onclick="Modificar();"><span class="fa fa-pencil-alt"></span> Modificar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer" id="tablaC" style="display: none">
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</body>
+<!-- javascript-->
+<script src="../assets/js/all.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/plugins/table/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/jquery-3.5.1.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/jszip.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/buttons.html5.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/pdfmake.min.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js/vfs_fonts.js"></script>
+<script src="../assets/plugins/table/Buttons-1.7.1/js//buttons.print.min.js"></script>
+
+
+<!-- <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+<script src="../js/persona.js"></script>
+<script src="../assets/plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+<!-- <script src="../assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script> -->
+
+
+
+</html>
